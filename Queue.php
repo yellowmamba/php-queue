@@ -12,6 +12,17 @@ class Queue
 		$this->list = $list;
 	}
 
+	public function getFirst()
+	{
+		return isset($this->list[0]) ? $this->list[0] : null;
+	}
+
+	public function getLast()
+	{
+		$count = count($this->list);
+		return $count ? $this->list[$count-1] : null;
+	}
+
 	/**
 	 * Add an element to the tail of the queue. Support Chaining methods.
 	 *
@@ -20,7 +31,8 @@ class Queue
 	 */
 	public function enqueue($element)
 	{
-
+		$this->list[] = $element;
+		return $this;
 	}
 
 	/**
@@ -30,7 +42,7 @@ class Queue
 	 */
 	public function dequeue()
 	{
-
+		return array_shift($this->list);
 	}
 
 	/**
